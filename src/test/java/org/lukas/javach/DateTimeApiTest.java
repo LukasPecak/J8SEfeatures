@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.format.DateTimeFormatter;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * Created by Lukas on 30.06.2017.
@@ -25,7 +25,7 @@ public class DateTimeApiTest {
         DateTimeApi dateTimeApi = new DateTimeApi();
         LocalDate programmersDay2017 = dateTimeApi.computeProgrammersDay(2017);
         log.info("The programmer day of " + 2017 + " is : " + programmersDay2017);
-        assertEquals(LocalDate.of(2017, Month.SEPTEMBER, 13),programmersDay2017);
+        assertEquals(LocalDate.of(2017, Month.SEPTEMBER, 13), programmersDay2017);
         LocalDate programmersDay2018 = dateTimeApi.computeProgrammersDay(2018);
         log.info("The programmer day of " + 2018 + " is : " + programmersDay2018);
         assertEquals(LocalDate.of(2018, Month.SEPTEMBER, 13), programmersDay2018);
@@ -83,10 +83,10 @@ public class DateTimeApiTest {
     public void testPlusYearsResultLeapYearFourTimeOneYear() {
         DateTimeApi dateTimeApi = new DateTimeApi();
         LocalDate resultDate = dateTimeApi.addYears(0L)
-            .plusYears(1L)
-            .plusYears(1L)
-            .plusYears(1L)
-            .plusYears(1L);
+                .plusYears(1L)
+                .plusYears(1L)
+                .plusYears(1L)
+                .plusYears(1L);
         log.info("2000-02-29 plus 4 times 1 year : " + resultDate);
         log.info("This is because the last plusYears adds to the date 2003-02-28 that must yield to the same date one year later");
         assertEquals(LocalDate.of(2004, 2, 28), resultDate);
