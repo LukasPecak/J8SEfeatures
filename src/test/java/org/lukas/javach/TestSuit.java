@@ -11,6 +11,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 
 @Suite.SuiteClasses({
-        DateTimeApiTest.class
+        DateTimeApiTest.class,
+        CalTest.class
 })
 public class TestSuit {}
