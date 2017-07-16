@@ -12,6 +12,7 @@ import org.junit.runners.Suite;
 
 @Suite.SuiteClasses({
         DateTimeApiTest.class,
-        CalTest.class
+        CalTest.class,
+        TimeIntervalTest.class
 })
 public class TestSuit {}

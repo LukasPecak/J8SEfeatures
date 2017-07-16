@@ -2,8 +2,6 @@ package org.lukas.javach;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Lukas on 13.07.2017.
  *

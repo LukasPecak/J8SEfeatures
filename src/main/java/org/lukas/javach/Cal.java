@@ -1,5 +1,8 @@
 package org.lukas.javach;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
@@ -16,13 +19,14 @@ import java.util.Locale;
  * Write an equivalent of the Unix cal program that displays a calendar for a month. For example, java Cal 3 2013
  */
 public class Cal {
+    private static final Logger log = LoggerFactory.getLogger(Cal.class);
 
     private static final String SPACES = "                    ";
     private static final String WEEK_DAYS_HEADER = "Su Mo Tu We Th Fr Sa";
 
     public static void main(String[] args) {
         if (args.length != 0 && args.length != 2) {
-            System.out.println("Wrong arguments. Execute using non argument for current month or Cal <month number> <year> (Cal 7 2017)");
+            log.error("Wrong arguments. Execute using non argument for current month or Cal <month number> <year> (Cal 7 2017)");
             return;
         }
         Cal cal = new Cal();
@@ -34,19 +38,16 @@ public class Cal {
             try {
                 month = cal.getRequestedMonth(args[0]);
                 year = cal.getRequestedYear(args[1]);
-            } catch (NumberFormatException exception) {
-                System.out.println(exception.getMessage());
-                return;
-            } catch (IllegalArgumentException exception) {
-                System.out.println(exception.getMessage());
+            } catch (RuntimeException exception) {
+                log.error(exception.getMessage());
                 return;
             }
         }
 
-        System.out.println(cal.getMonthHeader(month, year));
-        System.out.println(WEEK_DAYS_HEADER);
+        log.info(cal.getMonthHeader(month, year));
+        log.info(WEEK_DAYS_HEADER);
         for (String week : cal.getWeeks(month, year)) {
-            System.out.println(week);
+            log.info(week);
         }
 
     }

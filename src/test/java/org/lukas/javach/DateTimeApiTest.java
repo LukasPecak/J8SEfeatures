@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -114,6 +116,13 @@ public class DateTimeApiTest {
 
         assertEquals(LocalDate.of(2017, 7, 12), friday.with(dateTimeApi.next(w -> w.getDayOfWeek().equals(DayOfWeek.WEDNESDAY))));
 
+    }
+
+    @Test
+    public void printAllFriday13inXXcentury() {
+        List<LocalDate> allFriday13inXXcentury = new DateTimeApi().getAllFriday13inXXcentury();
+        allFriday13inXXcentury.stream().map(date -> date.format(DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy"))).forEach(System.out::println);
+        System.out.println(String.format("There are %d Fridays the 13ht in the XX century", allFriday13inXXcentury.size()));
     }
 
 }
