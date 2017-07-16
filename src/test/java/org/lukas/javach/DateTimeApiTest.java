@@ -119,10 +119,15 @@ public class DateTimeApiTest {
     }
 
     @Test
+    public void numberOfFidays13thInXXcentury() {
+        assertEquals(172, new DateTimeApi().getAllFriday13inXXcentury().size());
+    }
+
+    @Test
     public void printAllFriday13inXXcentury() {
         List<LocalDate> allFriday13inXXcentury = new DateTimeApi().getAllFriday13inXXcentury();
-        allFriday13inXXcentury.stream().map(date -> date.format(DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy"))).forEach(System.out::println);
-        System.out.println(String.format("There are %d Fridays the 13ht in the XX century", allFriday13inXXcentury.size()));
+        allFriday13inXXcentury.stream().map(date -> date.format(DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy"))).forEach(log::info);
+        System.out.println(String.format("\nThere are %d Fridays the 13ht in the XX century", allFriday13inXXcentury.size()));
     }
 
 }

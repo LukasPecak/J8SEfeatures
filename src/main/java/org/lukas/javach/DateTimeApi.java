@@ -58,7 +58,7 @@ class DateTimeApi {
     List<LocalDate> getAllFriday13inXXcentury() {
         final List<LocalDate> result = new ArrayList<>();
         LocalDate currentDate = LocalDate.of(1900, 1, 13);
-        for (currentDate.getYear(); currentDate.getYear() < 2000; currentDate = currentDate.plusMonths(1L)) {
+        for (; currentDate.getYear() < 2000; currentDate = currentDate.plusMonths(1L)) {
             if (currentDate.getDayOfWeek().equals(DayOfWeek.FRIDAY)) {
                 result.add(currentDate);
             }
